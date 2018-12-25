@@ -2,7 +2,8 @@
 
 @section('content')
     <h1>Создать товар</h1>
-    <form action="" method="post">
+    <form action="{{ route('product.store') }}" method="post">
+        {{ csrf_field() }}
         <div class="form-group">
             <label for="title">Название</label>
             <input type="title" name="title" class="form-control">
@@ -18,4 +19,5 @@
         </div>
         <input type="submit" class="btn btn-primary" value="Создать товар">
     </form>
+
 @endsection

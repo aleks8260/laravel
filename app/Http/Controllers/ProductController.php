@@ -14,8 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all(); /*все записи из таблицы продуктс хранятся*/
-        return view('products.index', compact('products')); /*через компакт передается переменная*/
+        //
+        $products= Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //Возвращаю форму создания products
+        //Для создания формы view.create.php
         return view('products.create');
     }
 
@@ -37,44 +38,43 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // принимает данные из form
-        // Создаем и сохраняем в БД наши product
+        //dd($request->all());
+        //принимает данные из формы dd($request->all())
         Product::create($request->all());
-        // редирект на список продуктов
-        return redirect(route('products.index'));
+        return redirect(route('product.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        $product = Product::findOrFail(1);
-        return view('products.show', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $products)
+    public function edit(Product $product)
     {
-        //
+        //форма редактирования
+        //edit.blade.php
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $products)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -82,10 +82,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $products)
+    public function destroy(Product $product)
     {
         //
     }

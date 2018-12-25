@@ -22,9 +22,9 @@ Route::get('posts/create', function () {
 */
 
 Route::get('posts', 'PostController@index');
-Route::resource('products', 'ProductController');
+//Route::resource('products', 'ProductController');
 //Роут регистрации и авторизации
 Auth::routes();
 Route::get('/admin', 'AdminController@dashboard')->name('dashboard');
-Route::resource('/admin/products', 'ProductController');
+Route::resource('/admin/product', 'ProductController');
 Route::get('/home', 'HomeController@index')->name('home');
