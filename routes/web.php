@@ -28,3 +28,6 @@ Route::group(['middleware'=>'auth'], function (){
     Route::get('/home', 'AdminController@dashboard')->name('dashboard');
     Route::get('/admin/users', 'UserController@index');
 });
+/*Введет на страницу с обратной связью*/
+Route::get('/feedback', 'MailController@feedback')->name('feedback');
+Route::post('/sendmail', 'MailController@sendmail')->name('sendmail');
