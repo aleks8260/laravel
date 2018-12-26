@@ -52,7 +52,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        // вернуть представление одного products и передаем туда переменную
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -63,8 +64,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //форма редактирования
-        //edit.blade.php
+        // передаем по ID продукт
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -76,7 +77,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // принимаем по ID продукт, редактируем и обновляем в БД
+        Product::find($product->id)->update($request->all());
+
+        // Редирект на страницу с продуктами
+        return redirect(route('product.index'));
     }
 
     /**
@@ -87,6 +92,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        // принимаем по ID продукт, удаляем и обновляем в БД
+        Product::find($product->id)->delete();
+        // Редирект на страницу с продуктами
+        return redirect(route('product.index'));
     }
 }

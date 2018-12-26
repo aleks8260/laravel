@@ -19,10 +19,14 @@
                 <td>{{ $product->content }}</td>
                 <td>{{ $product->price }}</td>
                 <td>
-                    <a href="#" class="btn btn-success"><span class="fa fa-edit"></span> Редактировать</a>
+                    <a href="{{ route('product.edit', [$product->id]) }}" class="btn btn-success"><span class="fa fa-edit"></span> Редактировать</a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-danger"><span class="fa fa-edit"></span> Удалить</a>
+                    {{--Открываем метод дестрой по айдишнику продукта, который хотим удалить--}}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['product.destroy', $product->id]]) !!}
+                    {{--По нажатию спрашиваем удалить или нет. Да - продукт удаляется, отмена - остаетс все как было--}}
+                    {!! Form::submit('Удалить', ['class' => 'btn btn-danger', 'onclick' => 'return confirm("Вы уверены?");']) !!}
+                    {!! Form::close() !!}
                 </td>
             </tr>
         @endforeach

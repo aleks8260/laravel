@@ -60,7 +60,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -179,7 +179,9 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            {{--@foreach($users as $user)--}}
+                                <span class="hidden-xs">{{--{{ $users->name }}--}}fiksik</span>{{--Alexander Pierce--}}
+                            {{--@endforeach--}}
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -187,7 +189,7 @@ desired effect
                                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
+                                    fiksik - Web Developer
                                     <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
@@ -237,7 +239,7 @@ desired effect
                     <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>fiksik</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -259,7 +261,7 @@ desired effect
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                {{--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>--}}
+                <li class="active"><a href="http://project.loc/admin/users"><i class="fa fa-link"></i> <span>Все пользователи</span></a></li>
                 {{--<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>--}}
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Продукты</span>

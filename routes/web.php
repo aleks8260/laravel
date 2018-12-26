@@ -15,16 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
-Route::get('posts/create', function () {
-    return view('posts.create');
-});
-*/
-
-Route::get('posts', 'PostController@index');
-//Route::resource('products', 'ProductController');
 //Роут регистрации и авторизации
 Auth::routes();
-Route::get('/admin', 'AdminController@dashboard')->name('dashboard');
-Route::resource('/admin/product', 'ProductController');
-Route::get('/home', 'HomeController@index')->name('home');
+// Запрещаем доступ не зарегестрированных пользователей ['middleware'=>'auth']
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('posts', 'PostController@index');
+    //Route::resource('products', 'ProductController');
+    Route::get('/admin', 'AdminController@dashboard')->name('dashboard');
+    Route::resource('/admin/product', 'ProductController');
+    //Route::get('/home', 'HomeController@index')->name('home');
+    /*Попадаю на страницу под зареганым, в админку*/
+    Route::get('/home', 'AdminController@dashboard')->name('dashboard');
+    Route::get('/admin/users', 'UserController@index');
+});
