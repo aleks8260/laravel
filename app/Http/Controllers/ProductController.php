@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -36,12 +37,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //dd($request->all());
-        //принимает данные из формы dd($request->all())
+        // принимает данные из form
+        // Создаем и сохраняем в БД наши product
         Product::create($request->all());
-        return redirect(route('product.index'));
+        // редирект на список продуктов
+        return redirect(route('product.index'))
+            ->with('success', 'Продукт успешно создан');
+
     }
 
     /**
@@ -81,7 +85,8 @@ class ProductController extends Controller
         Product::find($product->id)->update($request->all());
 
         // Редирект на страницу с продуктами
-        return redirect(route('product.index'));
+        return redirect(route('product.index'))
+            ->with('updated', 'Продукт успешно обновлен');
     }
 
     /**
@@ -94,7 +99,7 @@ class ProductController extends Controller
     {
         // принимаем по ID продукт, удаляем и обновляем в БД
         Product::find($product->id)->delete();
-        // Редирект на страницу с продуктами
+        // редирект на список продуктов
         return redirect(route('product.index'));
     }
 }

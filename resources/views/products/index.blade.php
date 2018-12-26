@@ -5,6 +5,19 @@
     <div style="margin-bottom: 15px;">
         <a href="{{ route('product.create')}}" class="btn btn-primary"> Создать товар</a>
     </div>
+    <!-- Проверяем есть ли в в сессии ключ-->
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            <!-- Если да, получаем значение это ключа-->
+            {{ Session::get('success') }}
+        </div>
+    @endif
+    @if(Session::has('updated'))
+        <div class="alert alert-warning">
+            {{ Session::get('updated') }}
+        </div>
+    @endif
+
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>Заголовок</th>

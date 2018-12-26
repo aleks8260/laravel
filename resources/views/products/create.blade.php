@@ -3,6 +3,15 @@
 @section('content')
     <a href="{{ URL::previous() }}" class="btn btn-default">Назад</a>
     <h1>Создать товар</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     {!! Form::open(['route' => 'product.store']) !!}
     <div class="form-group">
         {{ Form::label('title', 'Название') }}
